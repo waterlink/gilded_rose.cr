@@ -49,3 +49,12 @@ class BackstagePass
     item.quality = 0 if item.sell_in < 0
   end
 end
+
+class Sulfuras
+  private getter item
+  def initialize(@item)
+  end
+
+  def update
+  end
+end
