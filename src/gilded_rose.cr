@@ -20,11 +20,7 @@ class GildedRose
     end
   end
 
-  private def update_brie(item)
-  end
-
   private def update_backstage_pass(item)
-    BackstagePass.new(item).update
   end
 
   private def update_sulfuras(item)
@@ -37,7 +33,7 @@ class GildedRose
       Brie.new(item).update
 
     when item.name.match(/Backstage passes/)
-      update_backstage_pass(item)
+      BackstagePass.new(item).update
 
     when item.name.match(/Sulfuras/)
       update_sulfuras(item)
