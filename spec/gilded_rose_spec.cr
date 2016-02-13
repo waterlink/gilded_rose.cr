@@ -160,4 +160,16 @@ describe GildedRose do
     item.sell_in.should eq(9)
     item.quality.should eq(22)
   end
+
+  it "loses quality when it is Backstage passes with negative sell_in" do
+    item = Item.new("Backstage passes to a TAFKAL80ETC concert", -2, 20)
+    subject = GildedRose.new
+    subject.items = [item]
+
+    subject.update_quality
+
+    item.name.should eq("Backstage passes to a TAFKAL80ETC concert")
+    item.sell_in.should eq(-3)
+    item.quality.should eq(0)
+  end
 end
