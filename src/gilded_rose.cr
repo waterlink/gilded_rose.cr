@@ -23,12 +23,8 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      update_item(item)
+      item_updater(item).update
     end
-  end
-
-  private def update_item(item)
-    item_updater(item).update
   end
 
   private def item_updater(item)
