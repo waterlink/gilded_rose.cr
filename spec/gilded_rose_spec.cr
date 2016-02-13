@@ -11,5 +11,9 @@ describe GildedRose do
     subject.items = [item]
 
     subject.update_quality
+
+    item.name.should eq("+5 Dexterity Vest")
+    item.sell_in.should eq(9)
+    item.quality.should eq(19)
   end
 end
