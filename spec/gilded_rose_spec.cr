@@ -100,4 +100,16 @@ describe GildedRose do
     item.sell_in.should eq(10)
     item.quality.should eq(20)
   end
+
+  it "does not change when it is Sulfuras with negative sell_in" do
+    item = Item.new("Sulfuras, Hand of Ragnaros", -5, 20)
+    subject = GildedRose.new
+    subject.items = [item]
+
+    subject.update_quality
+
+    item.name.should eq("Sulfuras, Hand of Ragnaros")
+    item.sell_in.should eq(-5)
+    item.quality.should eq(20)
+  end
 end
