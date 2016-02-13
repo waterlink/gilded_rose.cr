@@ -7,8 +7,4 @@ class Item
     [self.name, self.sell_in, self.quality] ==
       [other.name, other.sell_in, other.quality]
   end
-
-  def ==(other)
-    false
-  end
 end
