@@ -198,13 +198,13 @@ describe GildedRose do
   end
 
   it "reduces quality at a 2x speed when Dexterity Vest has sell_in <= 0" do
-    item = Item.new("+5 Dexterity Vest", 0, 20)
+    item = Item.new("Conjured Mana Cake", 0, 20)
     subject = GildedRose.new
     subject.items = [item]
 
     subject.update_quality
 
-    item.name.should eq("+5 Dexterity Vest")
+    item.name.should eq("Conjured Mana Cake")
     item.sell_in.should eq(-1)
     item.quality.should eq(18)
   end
