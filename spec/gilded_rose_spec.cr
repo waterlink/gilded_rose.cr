@@ -220,4 +220,10 @@ describe GildedRose do
     item.sell_in.should eq(-1)
     item.quality.should eq(0)
   end
+
+  it "works with the array correctly" do
+    vest = Item.new("+5 Dexterity Vest", 10, 20)
+    sulf = Item.new("Sulfuras, Hand of Ragnaros", 10, 20)
+    pass = Item.new("Backstage passes to a TAFKAL80ETC concert", 4, 20)
+  end
 end
