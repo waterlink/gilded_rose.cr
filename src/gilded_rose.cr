@@ -51,7 +51,7 @@ class GildedRose
           if (@items[i].name != "Backstage passes to a TAFKAL80ETC concert") # OK
             if (@items[i].quality > 0) # OK
               if (@items[i].name != "Sulfuras, Hand of Ragnaros") # OK
-                @items[i].quality = @items[i].quality - 1
+                @items[i].quality = @items[i].quality - 1 # OK
               end
             end
           else
