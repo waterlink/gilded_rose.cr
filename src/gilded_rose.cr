@@ -21,6 +21,13 @@ class GildedRose
     item.quality = 0 if item.quality < 0
   end
 
+  def update_brie(item)
+    item.sell_in -= 1
+    item.quality += 1
+    item.quality += 1 if item.sell_in < 0
+    item.quality = 50 if item.quality > 50
+  end
+
   def update_quality
 
     (0..(@items.size-1)).each do |i| # OK
@@ -28,6 +35,11 @@ class GildedRose
       item = @items[i]
       if item.name != "Aged Brie" && !item.name.starts_with?("Backstage passes") && !item.name.starts_with?("Sulfuras")
         update_normal(item)
+        next
+      end
+
+      if item.name == "Aged Brie"
+        update_brie(item)
         next
       end
 
