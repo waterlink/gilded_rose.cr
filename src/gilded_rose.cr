@@ -41,9 +41,7 @@ class GildedRose
   end
 
   def update_quality
-
     (0..(@items.size-1)).each do |i| # OK
-
       item = @items[i]
       if item.name != "Aged Brie" && !item.name.starts_with?("Backstage passes") && !item.name.starts_with?("Sulfuras")
         update_normal(item)
@@ -64,53 +62,6 @@ class GildedRose
         update_sulfuras(item)
         next
       end
-
-      if (@items[i].name != "Aged Brie" && @items[i].name != "Backstage passes to a TAFKAL80ETC concert") # OK
-        if (@items[i].quality > 0) # OK
-          if (@items[i].name != "Sulfuras, Hand of Ragnaros") # OK
-            @items[i].quality = @items[i].quality - 1 # OK
-          end
-        end
-      else # OK
-        if (@items[i].quality < 50) # OK
-          @items[i].quality = @items[i].quality + 1 # OK
-          if (@items[i].name == "Backstage passes to a TAFKAL80ETC concert") # OK
-            if (@items[i].sell_in < 11) # OK
-              if (@items[i].quality < 50) # OK
-                @items[i].quality = @items[i].quality + 1 # OK
-              end
-            end
-            if (@items[i].sell_in < 6) # OK
-              if (@items[i].quality < 50) # OK
-                @items[i].quality = @items[i].quality + 1 # OK
-              end
-            end
-          end
-        end
-      end
-
-      if (@items[i].name != "Sulfuras, Hand of Ragnaros") # OK
-        @items[i].sell_in = @items[i].sell_in - 1 # OK
-      end
-
-      if (@items[i].sell_in < 0) # OK
-        if (@items[i].name != "Aged Brie") # OK
-          if (@items[i].name != "Backstage passes to a TAFKAL80ETC concert") # OK
-            if (@items[i].quality > 0) # OK
-              if (@items[i].name != "Sulfuras, Hand of Ragnaros") # OK
-                @items[i].quality = @items[i].quality - 1 # OK
-              end
-            end
-          else # OK
-            @items[i].quality = @items[i].quality - @items[i].quality # OK
-          end
-        else # OK
-          if (@items[i].quality < 50) # OK
-            @items[i].quality = @items[i].quality + 1 # OK
-          end
-        end
-      end
-
     end
   end
 end
