@@ -77,7 +77,7 @@ describe GildedRose do
     item.quality.should eq(50)
   end
 
-  it "... when it is Aged Brie" do
+  it "increases quality by two and decreases sell_in when it is Aged Brie when sell_in is negative" do
     item = Item.new("Aged Brie", -1, 20)
     subject = GildedRose.new
     subject.items = [item]
