@@ -2,7 +2,7 @@ require "./item"
 
 class GildedRose
   # TODO: remove, when not required for testability
-  setter items
+  property items
 
   def initialize
     @items = [] of Item
