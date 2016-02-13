@@ -1,11 +1,14 @@
 require "./item"
 
 class GildedRose
-  # TODO: remove, when not required for testability
-  property items
-
+  protected getter items
   private getter updater
-  def initialize(@updater=ItemUpdater)
+  def initialize(items=nil, @updater=ItemUpdater)
+    if items
+      @items = items
+      return
+    end
+
     @items = [] of Item
     @items << Item.new("+5 Dexterity Vest", 10, 20)
     @items << Item.new("Aged Brie", 2, 0)
@@ -13,6 +16,10 @@ class GildedRose
     @items << Item.new("Sulfuras, Hand of Ragnaros", 0, 80)
     @items << Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 20)
     @items << Item.new("Conjured Mana Cake", 3, 6)
+  end
+
+  def ==(other : GildedRose)
+    self.items == other.items
   end
 
   def update_quality

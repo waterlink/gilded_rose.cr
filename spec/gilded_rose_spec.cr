@@ -204,15 +204,14 @@ describe GildedRose do
     sulf = Item.new("Sulfuras, Hand of Ragnaros", 10, 20)
     pass = Item.new("Backstage passes to a TAFKAL80ETC concert", 4, 20)
 
-    subject = GildedRose.new
-    subject.items = [vest, sulf, pass]
+    subject = GildedRose.new(items: [vest, sulf, pass])
 
     subject.update_quality
 
-    subject.items.should eq([
+    subject.should eq(GildedRose.new(items: [
       Item.new("+5 Dexterity Vest", 9, 19),
       Item.new("Sulfuras, Hand of Ragnaros", 10, 20),
       Item.new("Backstage passes to a TAFKAL80ETC concert", 3, 23),
-    ])
+    ]))
   end
 end
