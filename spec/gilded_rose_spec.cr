@@ -125,7 +125,7 @@ describe GildedRose do
     item.quality.should eq(21)
   end
 
-  it "... when it is Backstage passes of highest quality" do
+  it "does not increase quality when it is Backstage passes of highest quality" do
     item = Item.new("Backstage passes to a TAFKAL80ETC concert", 20, 50)
     subject = GildedRose.new
     subject.items = [item]
