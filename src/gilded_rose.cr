@@ -33,6 +33,7 @@ class GildedRose
   end
 
   private def update_sulfuras(item)
+    Sulfuras.new(item).update
   end
 
   private def update_item(item)
