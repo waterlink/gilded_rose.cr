@@ -71,3 +71,30 @@ class Conjured
     item.quality = 0 if item.quality < 0
   end
 end
+
+class ItemUpdater
+  UPDATERS = {
+    /Brie/ => Brie,
+    /Backstage passes/ => BackstagePass,
+    /Sulfuras/ => Sulfuras,
+    /Conjured/ => Conjured,
+  }
+  DEFAULT_UPDATER = Normal
+
+  private getter item
+  def initialize(@item)
+  end
+
+  def update
+    item_updater.update
+  end
+
+  private def item_updater
+    factory = UPDATERS
+      .to_a
+      .find { |x| item.name.match(x.first) }
+
+    (factory || {nil, DEFAULT_UPDATER})[1]
+      .new(item)
+  end
+end

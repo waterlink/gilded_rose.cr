@@ -4,15 +4,8 @@ class GildedRose
   # TODO: remove, when not required for testability
   property items
 
-  UPDATERS = {
-    /Brie/ => Brie,
-    /Backstage passes/ => BackstagePass,
-    /Sulfuras/ => Sulfuras,
-    /Conjured/ => Conjured,
-  }
-  DEFAULT_UPDATER = Normal
-
-  def initialize
+  private getter updater
+  def initialize(@updater=ItemUpdater)
     @items = [] of Item
     @items << Item.new("+5 Dexterity Vest", 10, 20)
     @items << Item.new("Aged Brie", 2, 0)
@@ -24,16 +17,7 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      item_updater(item).update
+      updater.new(item).update
     end
-  end
-
-  private def item_updater(item)
-    factory = UPDATERS
-      .to_a
-      .find { |x| item.name.match(x.first) }
-
-    (factory || {nil, DEFAULT_UPDATER})[1]
-      .new(item)
   end
 end
