@@ -4,6 +4,13 @@ class GildedRose
   # TODO: remove, when not required for testability
   property items
 
+  UPDATERS = {
+    /Brie/ => Brie,
+    /Backstage passes/ => BackstagePass,
+    /Sulfuras/ => Sulfuras,
+  }
+  DEFAULT_UPDATER = Normal
+
   def initialize
     @items = [] of Item
     @items << Item.new("+5 Dexterity Vest", 10, 20)
@@ -25,18 +32,11 @@ class GildedRose
   end
 
   private def item_updater(item)
-    case
-    when item.name.match(/Brie/)
-      Brie.new(item)
+    factory = UPDATERS
+      .to_a
+      .find { |x| item.name.match(x.first) }
 
-    when item.name.match(/Backstage passes/)
-      BackstagePass.new(item)
-
-    when item.name.match(/Sulfuras/)
-      Sulfuras.new(item)
-
-    else
-      Normal.new(item)
-    end
+    (factory || {nil, DEFAULT_UPDATER})[1]
+      .new(item)
   end
 end
