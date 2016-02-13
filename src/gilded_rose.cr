@@ -20,9 +20,6 @@ class GildedRose
     end
   end
 
-  private def update_sulfuras(item)
-  end
-
   private def update_item(item)
     case
     when item.name.match(/Brie/)
