@@ -1,6 +1,9 @@
 require "./item"
 
 class GildedRose
+  # TODO: remove, when not required for testability
+  setter items
+
   def initialize
     @items = [] of Item
     @items << Item.new("+5 Dexterity Vest", 10, 20)
