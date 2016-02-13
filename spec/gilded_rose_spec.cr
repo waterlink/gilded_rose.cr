@@ -64,4 +64,16 @@ describe GildedRose do
     item.sell_in.should eq(9)
     item.quality.should eq(21)
   end
+
+  it "... when it is Aged Brie" do
+    item = Item.new("Aged Brie", 10, 50)
+    subject = GildedRose.new
+    subject.items = [item]
+
+    subject.update_quality
+
+    item.name.should eq("Aged Brie")
+    item.sell_in.should eq(9)
+    item.quality.should eq(50)
+  end
 end
