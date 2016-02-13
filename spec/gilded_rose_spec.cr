@@ -230,5 +230,11 @@ describe GildedRose do
     subject.items = [vest, sulf, pass]
 
     subject.update_quality
+
+    subject.items.should eq([
+      Item.new("+5 Dexterity Vest", 9, 19),
+      Item.new("Sulfuras, Hand of Ragnaros", 10, 20),
+      Item.new("Backstage passes to a TAFKAL80ETC concert", 3, 23),
+    ])
   end
 end
