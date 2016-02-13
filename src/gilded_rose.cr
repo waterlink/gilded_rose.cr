@@ -24,7 +24,7 @@ class GildedRose
           end
         end
       else # covered
-        if (@items[i].quality < 50)
+        if (@items[i].quality < 50) # covered
           @items[i].quality = @items[i].quality + 1  # covered
           if (@items[i].name == "Backstage passes to a TAFKAL80ETC concert")
             if (@items[i].sell_in < 11)
