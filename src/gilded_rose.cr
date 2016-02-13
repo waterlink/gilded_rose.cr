@@ -20,9 +20,6 @@ class GildedRose
     end
   end
 
-  private def update_normal(item)
-  end
-
   private def update_brie(item)
     Brie.new(item).update
   end
