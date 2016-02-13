@@ -40,24 +40,28 @@ class GildedRose
   def update_sulfuras(item)
   end
 
+  def update_item(item)
+    if item.name.match(/Brie/)
+      update_brie(item)
+      return
+    end
+
+    if item.name.starts_with?("Backstage passes")
+      update_backstage_pass(item)
+      return
+    end
+
+    if item.name.starts_with?("Sulfuras")
+      update_sulfuras(item)
+      return
+    end
+
+    update_normal(item)
+  end
+
   def update_quality
     @items.each do |item|
-      if item.name.match(/Brie/)
-        update_brie(item)
-        next
-      end
-
-      if item.name.starts_with?("Backstage passes")
-        update_backstage_pass(item)
-        next
-      end
-
-      if item.name.starts_with?("Sulfuras")
-        update_sulfuras(item)
-        next
-      end
-
-      update_normal(item)
+      update_item(item)
     end
   end
 end
