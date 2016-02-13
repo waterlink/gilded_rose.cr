@@ -16,7 +16,7 @@ class GildedRose
 
   def update_quality
 
-    (0..(@items.size-1)).each do |i|
+    (0..(@items.size-1)).each do |i| # OK
 
       if (@items[i].name != "Aged Brie" && @items[i].name != "Backstage passes to a TAFKAL80ETC concert") # OK
         if (@items[i].quality > 0) # OK
