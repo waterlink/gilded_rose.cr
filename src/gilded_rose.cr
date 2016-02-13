@@ -54,7 +54,7 @@ class GildedRose
                 @items[i].quality = @items[i].quality - 1 # OK
               end
             end
-          else
+          else # OK
             @items[i].quality = @items[i].quality - @items[i].quality
           end
         else
