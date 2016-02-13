@@ -41,10 +41,12 @@ class GildedRose
           end
         end
       end
+
       if (@items[i].name != "Sulfuras, Hand of Ragnaros")
         # covered: 1
         @items[i].sell_in = @items[i].sell_in - 1;
       end
+
       if (@items[i].sell_in < 0)
         if (@items[i].name != "Aged Brie")
           if (@items[i].name != "Backstage passes to a TAFKAL80ETC concert")
