@@ -61,5 +61,4 @@ class GildedRose
       update_normal(item)
     end
   end
-
 end
