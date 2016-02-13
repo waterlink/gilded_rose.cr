@@ -17,6 +17,7 @@ class GildedRose
   def update_quality
 
     (0..(@items.size-1)).each do |i|
+
       if (@items[i].name != "Aged Brie" && @items[i].name != "Backstage passes to a TAFKAL80ETC concert")
         if (@items[i].quality > 0)
           if (@items[i].name != "Sulfuras, Hand of Ragnaros")
@@ -62,6 +63,7 @@ class GildedRose
           end
         end
       end
+
     end
   end
 end
