@@ -1,6 +1,15 @@
 require "./item"
 
 class GildedRose
+  DEFAULT_ITEMS = [
+    Item.new("+5 Dexterity Vest", 10, 20),
+    Item.new("Aged Brie", 2, 0),
+    Item.new("Elixir of the Mongoose", 5, 7),
+    Item.new("Sulfuras, Hand of Ragnaros", 0, 80),
+    Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+    Item.new("Conjured Mana Cake", 3, 6),
+  ]
+
   protected getter items
   private getter updater
   def initialize(items=nil, @updater=ItemUpdater)
@@ -9,13 +18,7 @@ class GildedRose
       return
     end
 
-    @items = [] of Item
-    items << Item.new("+5 Dexterity Vest", 10, 20)
-    items << Item.new("Aged Brie", 2, 0)
-    items << Item.new("Elixir of the Mongoose", 5, 7)
-    items << Item.new("Sulfuras, Hand of Ragnaros", 0, 80)
-    items << Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 20)
-    items << Item.new("Conjured Mana Cake", 3, 6)
+    @items = DEFAULT_ITEMS
   end
 
   def ==(other : GildedRose)
