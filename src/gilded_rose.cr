@@ -23,7 +23,7 @@ class GildedRose
   end
 
   def update_quality
-    @items.each do |item|
+    items.each do |item|
       updater.new(item).update
     end
   end
