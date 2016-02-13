@@ -158,7 +158,7 @@ describe GildedRose do
 
     item.name.should eq("Backstage passes to a TAFKAL80ETC concert")
     item.sell_in.should eq(3)
-    item.quality.should eq(22)
+    item.quality.should eq(23)
   end
 
   it "loses quality when it is Backstage passes with negative sell_in" do
