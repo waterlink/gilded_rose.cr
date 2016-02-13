@@ -21,18 +21,22 @@ class GildedRose
   end
 
   private def update_item(item)
+    item_updater(item).update
+  end
+
+  private def item_updater(item)
     case
     when item.name.match(/Brie/)
-      Brie.new(item).update
+      Brie.new(item)
 
     when item.name.match(/Backstage passes/)
-      BackstagePass.new(item).update
+      BackstagePass.new(item)
 
     when item.name.match(/Sulfuras/)
-      Sulfuras.new(item).update
+      Sulfuras.new(item)
 
     else
-      Normal.new(item).update
+      Normal.new(item)
     end
   end
 end
