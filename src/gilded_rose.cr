@@ -43,7 +43,7 @@ class GildedRose
       end
 
       if (@items[i].name != "Sulfuras, Hand of Ragnaros") # OK
-        @items[i].sell_in = @items[i].sell_in - 1
+        @items[i].sell_in = @items[i].sell_in - 1 # OK
       end
 
       if (@items[i].sell_in < 0)
