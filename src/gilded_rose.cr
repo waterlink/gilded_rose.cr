@@ -20,11 +20,7 @@ class GildedRose
     end
   end
 
-  private def update_backstage_pass(item)
-  end
-
   private def update_sulfuras(item)
-    Sulfuras.new(item).update
   end
 
   private def update_item(item)
@@ -36,7 +32,7 @@ class GildedRose
       BackstagePass.new(item).update
 
     when item.name.match(/Sulfuras/)
-      update_sulfuras(item)
+      Sulfuras.new(item).update
 
     else
       Normal.new(item).update
