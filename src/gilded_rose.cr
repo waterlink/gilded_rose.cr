@@ -14,9 +14,22 @@ class GildedRose
     @items << Item.new("Conjured Mana Cake", 3, 6)
   end
 
+  def update_normal(item)
+    item.sell_in -= 1
+    item.quality -= 1
+    item.quality -= 1 if item.sell_in < 0
+    item.quality = 0 if item.quality < 0
+  end
+
   def update_quality
 
     (0..(@items.size-1)).each do |i| # OK
+
+      item = @items[i]
+      if item.name != "Aged Brie" && !item.name.starts_with?("Backstage passes") && !item.name.starts_with?("Sulfuras")
+        update_normal(item)
+        next
+      end
 
       if (@items[i].name != "Aged Brie" && @items[i].name != "Backstage passes to a TAFKAL80ETC concert") # OK
         if (@items[i].quality > 0) # OK
