@@ -88,4 +88,16 @@ describe GildedRose do
     item.sell_in.should eq(-2)
     item.quality.should eq(22)
   end
+
+  it "... when it is Sulfuras" do
+    item = Item.new("Sulfuras, Hand of Ragnaros", 10, 20)
+    subject = GildedRose.new
+    subject.items = [item]
+
+    subject.update_quality
+
+    item.name.should eq("Sulfuras, Hand of Ragnaros")
+    item.sell_in.should eq(10)
+    item.quality.should eq(20)
+  end
 end
