@@ -26,7 +26,7 @@ class GildedRose
         end
       else # OK
         if (@items[i].quality < 50) # OK
-          @items[i].quality = @items[i].quality + 1
+          @items[i].quality = @items[i].quality + 1 # OK
           if (@items[i].name == "Backstage passes to a TAFKAL80ETC concert")
             if (@items[i].sell_in < 11)
               if (@items[i].quality < 50)
