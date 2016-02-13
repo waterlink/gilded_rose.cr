@@ -17,7 +17,7 @@ describe GildedRose do
     item.quality.should eq(19)
   end
 
-  it "does not change quality when Dexterity Vest has quality == 0" do
+  it "does not change quality when Dexterity Vest has quality <= 0" do
     item = Item.new("+5 Dexterity Vest", 10, 0)
     subject = GildedRose.new
     subject.items = [item]
@@ -29,7 +29,7 @@ describe GildedRose do
     item.quality.should eq(0)
   end
 
-  it "reduces quality at a 2x speed when Dexterity Vest has sell_in == 0" do
+  it "reduces quality at a 2x speed when Dexterity Vest has sell_in <= 0" do
     item = Item.new("+5 Dexterity Vest", 0, 20)
     subject = GildedRose.new
     subject.items = [item]
