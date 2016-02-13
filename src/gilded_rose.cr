@@ -41,10 +41,10 @@ class GildedRose
     when item.name.match(/Brie/)
       update_brie(item)
 
-    when item.name.starts_with?("Backstage passes")
+    when item.name.match(/Backstage passes/)
       update_backstage_pass(item)
 
-    when item.name.starts_with?("Sulfuras")
+    when item.name.match(/Sulfuras/)
       update_sulfuras(item)
 
     else
