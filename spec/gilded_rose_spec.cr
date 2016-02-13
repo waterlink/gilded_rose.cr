@@ -225,5 +225,10 @@ describe GildedRose do
     vest = Item.new("+5 Dexterity Vest", 10, 20)
     sulf = Item.new("Sulfuras, Hand of Ragnaros", 10, 20)
     pass = Item.new("Backstage passes to a TAFKAL80ETC concert", 4, 20)
+
+    subject = GildedRose.new
+    subject.items = [vest, sulf, pass]
+
+    subject.update_quality
   end
 end
