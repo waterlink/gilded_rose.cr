@@ -89,7 +89,7 @@ describe GildedRose do
     item.quality.should eq(22)
   end
 
-  it "... when it is Sulfuras" do
+  it "does not change when it is Sulfuras" do
     item = Item.new("Sulfuras, Hand of Ragnaros", 10, 20)
     subject = GildedRose.new
     subject.items = [item]
