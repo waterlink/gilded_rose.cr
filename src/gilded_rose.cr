@@ -19,7 +19,7 @@ class GildedRose
     (0..(@items.size-1)).each do |i|
 
       if (@items[i].name != "Aged Brie" && @items[i].name != "Backstage passes to a TAFKAL80ETC concert") # OK
-        if (@items[i].quality > 0)
+        if (@items[i].quality > 0) # OK
           if (@items[i].name != "Sulfuras, Hand of Ragnaros")
             @items[i].quality = @items[i].quality - 1
           end
