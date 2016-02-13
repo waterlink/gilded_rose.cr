@@ -21,7 +21,6 @@ class GildedRose
   end
 
   private def update_brie(item)
-    Brie.new(item).update
   end
 
   private def update_backstage_pass(item)
@@ -35,7 +34,7 @@ class GildedRose
   private def update_item(item)
     case
     when item.name.match(/Brie/)
-      update_brie(item)
+      Brie.new(item).update
 
     when item.name.match(/Backstage passes/)
       update_backstage_pass(item)
