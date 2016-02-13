@@ -28,6 +28,15 @@ class GildedRose
     item.quality = 50 if item.quality > 50
   end
 
+  def update_backstage_pass(item)
+    item.sell_in -= 1
+    item.quality += 1
+    item.quality += 1 if item.sell_in < 11
+    item.quality += 1 if item.sell_in < 6
+    item.quality = 50 if item.quality > 50
+    item.quality = 0 if item.sell_in < 0
+  end
+
   def update_quality
 
     (0..(@items.size-1)).each do |i| # OK
@@ -40,6 +49,11 @@ class GildedRose
 
       if item.name == "Aged Brie"
         update_brie(item)
+        next
+      end
+
+      if item.name.starts_with?("Backstage passes")
+        update_backstage_pass(item)
         next
       end
 
