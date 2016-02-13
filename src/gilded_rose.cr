@@ -43,11 +43,6 @@ class GildedRose
   def update_quality
     (0..(@items.size-1)).each do |i| # OK
       item = @items[i]
-      if item.name != "Aged Brie" && !item.name.starts_with?("Backstage passes") && !item.name.starts_with?("Sulfuras")
-        update_normal(item)
-        next
-      end
-
       if item.name == "Aged Brie"
         update_brie(item)
         next
@@ -62,6 +57,8 @@ class GildedRose
         update_sulfuras(item)
         next
       end
+
+      update_normal(item)
     end
   end
 end
