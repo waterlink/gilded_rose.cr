@@ -46,7 +46,7 @@ class GildedRose
         @items[i].sell_in = @items[i].sell_in - 1 # OK
       end
 
-      if (@items[i].sell_in < 0)
+      if (@items[i].sell_in < 0) # OK
         if (@items[i].name != "Aged Brie")
           if (@items[i].name != "Backstage passes to a TAFKAL80ETC concert")
             if (@items[i].quality > 0)
