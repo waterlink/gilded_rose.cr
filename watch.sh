@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 AUTO_COMMIT=${AUTO_COMMIT:-""}
+COMMIT_ON_FAILURE=${COMMIT_ON_FAILURE:-""}
 FUNNY_COMMIT=${FUNNY_COMMIT:-""}
 
 os="$(uname)"
@@ -55,7 +56,7 @@ watch src spec \
     else
       failure=$(cat .watch.out | grep 'Failure\|expected:\|got:\|Error in')
       cat .watch.out
-      ! [[ -z "$AUTO_COMMIT" ]] && git add . && git commit -m "[RED] Change $(next_change)$(commit_message)" && committed="(committed)"
+      ! [[ -z "$AUTO_COMMIT" ]] && ! [[ -z "$COMMIT_ON_FAILURE" ]] && git add . && git commit -m "[RED] Change $(next_change)$(commit_message)" && committed="(committed)"
       notify --expire-time=3000 "FAILURE:$failure $committed"
     fi
 done
