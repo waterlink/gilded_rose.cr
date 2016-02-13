@@ -8,6 +8,7 @@ class GildedRose
     /Brie/ => Brie,
     /Backstage passes/ => BackstagePass,
     /Sulfuras/ => Sulfuras,
+    /Conjured/ => Conjured,
   }
   DEFAULT_UPDATER = Normal
 

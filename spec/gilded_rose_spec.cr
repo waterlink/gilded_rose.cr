@@ -169,7 +169,7 @@ describe GildedRose do
     item.quality.should eq(0)
   end
 
-  pending "decreases sell_in and decreases quality x2 of Conjured item" do
+  it "decreases sell_in and decreases quality x2 of Conjured item" do
     item = Item.new("Conjured Mana Cake", 10, 20)
     subject = GildedRose.new
     subject.items = [item]
@@ -193,7 +193,7 @@ describe GildedRose do
     item.quality.should eq(0)
   end
 
-  pending "reduces quality at a 4x speed when Conjured item has sell_in <= 0" do
+  it "reduces quality at a 4x speed when Conjured item has sell_in <= 0" do
     item = Item.new("Conjured Mana Cake", 0, 20)
     subject = GildedRose.new
     subject.items = [item]
