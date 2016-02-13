@@ -148,4 +148,16 @@ describe GildedRose do
     item.sell_in.should eq(9)
     item.quality.should eq(22)
   end
+
+  it "increases quality thrice when it is Backstage passes with low sell_in" do
+    item = Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 20)
+    subject = GildedRose.new
+    subject.items = [item]
+
+    subject.update_quality
+
+    item.name.should eq("Backstage passes to a TAFKAL80ETC concert")
+    item.sell_in.should eq(9)
+    item.quality.should eq(22)
+  end
 end
