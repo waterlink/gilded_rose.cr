@@ -55,7 +55,7 @@ class GildedRose
               end
             end
           else # OK
-            @items[i].quality = @items[i].quality - @items[i].quality
+            @items[i].quality = @items[i].quality - @items[i].quality # OK
           end
         else
           if (@items[i].quality < 50)
