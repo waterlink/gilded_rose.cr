@@ -173,7 +173,7 @@ describe GildedRose do
     item.quality.should eq(0)
   end
 
-  it "decreases sell_in and decreases quality x2 of Conjured item" do
+  pending "decreases sell_in and decreases quality x2 of Conjured item" do
     item = Item.new("Conjured Mana Cake", 10, 20)
     subject = GildedRose.new
     subject.items = [item]
@@ -182,7 +182,7 @@ describe GildedRose do
 
     item.name.should eq("Conjured Mana Cake")
     item.sell_in.should eq(9)
-    item.quality.should eq(19)
+    item.quality.should eq(18)
   end
 
   it "does not change quality when Dexterity Vest has quality <= 0" do
