@@ -17,7 +17,7 @@ describe GildedRose do
     item.quality.should eq(19)
   end
 
-  it "... when Dexterity Vest has quality == 0" do
+  it "does not change quality when Dexterity Vest has quality == 0" do
     item = Item.new("+5 Dexterity Vest", 10, 0)
     subject = GildedRose.new
     subject.items = [item]
