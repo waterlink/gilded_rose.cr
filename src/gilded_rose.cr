@@ -34,7 +34,7 @@ class GildedRose
               end
             end
             if (@items[i].sell_in < 6) # OK
-              if (@items[i].quality < 50)
+              if (@items[i].quality < 50) # OK
                 @items[i].quality = @items[i].quality + 1
               end
             end
