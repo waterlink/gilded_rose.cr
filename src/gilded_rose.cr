@@ -14,21 +14,27 @@ class GildedRose
     @items << Item.new("Conjured Mana Cake", 3, 6)
   end
 
-  def update_normal(item)
+  def update_quality
+    @items.each do |item|
+      update_item(item)
+    end
+  end
+
+  private def update_normal(item)
     item.sell_in -= 1
     item.quality -= 1
     item.quality -= 1 if item.sell_in < 0
     item.quality = 0 if item.quality < 0
   end
 
-  def update_brie(item)
+  private def update_brie(item)
     item.sell_in -= 1
     item.quality += 1
     item.quality += 1 if item.sell_in < 0
     item.quality = 50 if item.quality > 50
   end
 
-  def update_backstage_pass(item)
+  private def update_backstage_pass(item)
     item.sell_in -= 1
     item.quality += 1
     item.quality += 1 if item.sell_in < 11
@@ -37,10 +43,10 @@ class GildedRose
     item.quality = 0 if item.sell_in < 0
   end
 
-  def update_sulfuras(item)
+  private def update_sulfuras(item)
   end
 
-  def update_item(item)
+  private def update_item(item)
     case
     when item.name.match(/Brie/)
       update_brie(item)
@@ -56,9 +62,4 @@ class GildedRose
     end
   end
 
-  def update_quality
-    @items.each do |item|
-      update_item(item)
-    end
-  end
 end
