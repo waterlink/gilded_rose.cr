@@ -21,7 +21,6 @@ class GildedRose
   end
 
   private def update_normal(item)
-    Normal.new(item).update
   end
 
   private def update_brie(item)
@@ -48,7 +47,7 @@ class GildedRose
       update_sulfuras(item)
 
     else
-      update_normal(item)
+      Normal.new(item).update
     end
   end
 end
