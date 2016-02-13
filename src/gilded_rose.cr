@@ -37,6 +37,9 @@ class GildedRose
     item.quality = 0 if item.sell_in < 0
   end
 
+  def update_sulfuras(item)
+  end
+
   def update_quality
 
     (0..(@items.size-1)).each do |i| # OK
@@ -54,6 +57,11 @@ class GildedRose
 
       if item.name.starts_with?("Backstage passes")
         update_backstage_pass(item)
+        next
+      end
+
+      if item.name.starts_with?("Sulfuras")
+        update_sulfuras(item)
         next
       end
 
