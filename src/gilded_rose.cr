@@ -21,10 +21,7 @@ class GildedRose
   end
 
   private def update_normal(item)
-    item.sell_in -= 1
-    item.quality -= 1
-    item.quality -= 1 if item.sell_in < 0
-    item.quality = 0 if item.quality < 0
+    Normal.new(item).update
   end
 
   private def update_brie(item)

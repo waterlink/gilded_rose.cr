@@ -7,16 +7,16 @@ class Item
     [self.name, self.sell_in, self.quality] ==
       [other.name, other.sell_in, other.quality]
   end
-
-  def update
-  end
 end
 
-class Normal < Item
+class Normal
+  def initialize(@item)
+  end
+
   def update
-    @sell_in -= 1
-    @quality -= 1
-    @quality -= 1 if @sell_in < 0
-    @quality = 0 if @quality < 0
+    @item.sell_in -= 1
+    @item.quality -= 1
+    @item.quality -= 1 if @item.sell_in < 0
+    @item.quality = 0 if @item.quality < 0
   end
 end
