@@ -40,4 +40,16 @@ describe GildedRose do
     item.sell_in.should eq(-1)
     item.quality.should eq(18)
   end
+
+  it "... when Dexterity Vest has sell_in <= 0 and quality <= 0" do
+    item = Item.new("+5 Dexterity Vest", 0, 0)
+    subject = GildedRose.new
+    subject.items = [item]
+
+    subject.update_quality
+
+    item.name.should eq("+5 Dexterity Vest")
+    item.sell_in.should eq(-1)
+    item.quality.should eq(0)
+  end
 end
