@@ -42,7 +42,7 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      if item.name == "Aged Brie"
+      if item.name.match(/Brie/)
         update_brie(item)
         next
       end
