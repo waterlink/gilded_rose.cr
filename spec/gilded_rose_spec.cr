@@ -25,10 +25,9 @@ describe GildedRose do
 
   it "reduces quality at a 2x speed when Dexterity Vest has sell_in <= 0" do
     item = Item.new("+5 Dexterity Vest", 0, 20)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("+5 Dexterity Vest")
     item.sell_in.should eq(-1)
@@ -37,10 +36,9 @@ describe GildedRose do
 
   it "reduces only sell_in when Dexterity Vest has sell_in <= 0 and quality <= 0" do
     item = Item.new("+5 Dexterity Vest", 0, 0)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("+5 Dexterity Vest")
     item.sell_in.should eq(-1)
@@ -49,10 +47,9 @@ describe GildedRose do
 
   it "increases quality by one and decreases sell_in when it is Aged Brie" do
     item = Item.new("Aged Brie", 10, 20)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Aged Brie")
     item.sell_in.should eq(9)
@@ -61,10 +58,9 @@ describe GildedRose do
 
   it "decreases only sell_in when it is Aged Brie with maximum quality" do
     item = Item.new("Aged Brie", 10, 50)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Aged Brie")
     item.sell_in.should eq(9)
@@ -73,10 +69,9 @@ describe GildedRose do
 
   it "increases quality by two and decreases sell_in when it is Aged Brie when sell_in is negative" do
     item = Item.new("Aged Brie", -1, 20)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Aged Brie")
     item.sell_in.should eq(-2)
@@ -85,10 +80,9 @@ describe GildedRose do
 
   it "does not change when it is Sulfuras" do
     item = Item.new("Sulfuras, Hand of Ragnaros", 10, 20)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Sulfuras, Hand of Ragnaros")
     item.sell_in.should eq(10)
@@ -97,10 +91,9 @@ describe GildedRose do
 
   it "does not change when it is Sulfuras with negative sell_in" do
     item = Item.new("Sulfuras, Hand of Ragnaros", -5, 20)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Sulfuras, Hand of Ragnaros")
     item.sell_in.should eq(-5)
@@ -109,10 +102,9 @@ describe GildedRose do
 
   it "increases quality and decreases sell_in when it is Backstage passes" do
     item = Item.new("Backstage passes to a TAFKAL80ETC concert", 20, 20)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Backstage passes to a TAFKAL80ETC concert")
     item.sell_in.should eq(19)
@@ -121,10 +113,9 @@ describe GildedRose do
 
   it "does not increase quality when it is Backstage passes of highest quality" do
     item = Item.new("Backstage passes to a TAFKAL80ETC concert", 20, 50)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Backstage passes to a TAFKAL80ETC concert")
     item.sell_in.should eq(19)
@@ -133,10 +124,9 @@ describe GildedRose do
 
   it "increases quality twice when it is Backstage passes with low sell_in" do
     item = Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 20)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Backstage passes to a TAFKAL80ETC concert")
     item.sell_in.should eq(9)
@@ -145,10 +135,9 @@ describe GildedRose do
 
   it "increases quality thrice when it is Backstage passes with lowest sell_in" do
     item = Item.new("Backstage passes to a TAFKAL80ETC concert", 4, 20)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Backstage passes to a TAFKAL80ETC concert")
     item.sell_in.should eq(3)
@@ -157,10 +146,9 @@ describe GildedRose do
 
   it "loses quality when it is Backstage passes with negative sell_in" do
     item = Item.new("Backstage passes to a TAFKAL80ETC concert", -2, 20)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Backstage passes to a TAFKAL80ETC concert")
     item.sell_in.should eq(-3)
@@ -169,10 +157,9 @@ describe GildedRose do
 
   it "decreases sell_in and decreases quality x2 of Conjured item" do
     item = Item.new("Conjured Mana Cake", 10, 20)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Conjured Mana Cake")
     item.sell_in.should eq(9)
@@ -181,10 +168,9 @@ describe GildedRose do
 
   it "does not change quality when Conjured item has quality <= 0" do
     item = Item.new("Conjured Mana Cake", 10, 0)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Conjured Mana Cake")
     item.sell_in.should eq(9)
@@ -193,10 +179,9 @@ describe GildedRose do
 
   it "reduces quality at a 4x speed when Conjured item has sell_in <= 0" do
     item = Item.new("Conjured Mana Cake", 0, 20)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Conjured Mana Cake")
     item.sell_in.should eq(-1)
@@ -205,10 +190,9 @@ describe GildedRose do
 
   it "reduces only sell_in when Conjured item has sell_in <= 0 and quality <= 0" do
     item = Item.new("Conjured Mana Cake", 0, 0)
-    subject = GildedRose.new
-    subject.items = [item]
+    subject = ItemUpdater.new(item)
 
-    subject.update_quality
+    subject.update
 
     item.name.should eq("Conjured Mana Cake")
     item.sell_in.should eq(-1)
